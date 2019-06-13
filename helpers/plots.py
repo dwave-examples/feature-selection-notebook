@@ -53,10 +53,22 @@ def plot_lingress(df, toy):
     sub_plot((12, 4), 3, 0, np.linspace(-np.pi, np.pi, len(df)), subtitles, df, toy) 
     plt.suptitle("Toy Problem: Linear Regression", fontsize=15)
 
+# Warning since 0.24.2
+#def plot_se(data):
+#    pd.DataFrame(data).plot(x='Bins', y=['Maximum', 'Uniform', 'Exp', 'Vals'], style = [ 'ro','b', 'g', 'y'])
+#    plt.title("Shannon Entropy")
+#    plt.ylabel("Entropy")
 def plot_se(data):
-    pd.DataFrame(data).plot(x='Bins', y=['Maximum', 'Uniform', 'Exp', 'Vals'], style = [ 'ro','b', 'g', 'y'])
+    df = pd.DataFrame(data)
+    plt.figure(figsize=(5, 4))
+    plt.plot(df[['Bins']], df[['Maximum']], 'ro', 
+             df[['Bins']], df[['Uniform']], 'b', 
+             df[['Bins']], df[['Exp']], 'g', 
+             df[['Bins']], df[['Vals']], 'y')
     plt.title("Shannon Entropy")
+    plt.xlabel("Bins")
     plt.ylabel("Entropy")
+    plt.legend(['Maximum', 'Uniform', 'Exp', 'Vals'])
     
 def plot_mi(scores):
     if len(scores) > 5:
