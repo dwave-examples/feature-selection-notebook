@@ -22,7 +22,7 @@ def qpu_working_graph(qpu):
     
     dnx_graphs = {'chimera': dnx.chimera_graph, 'pegasus': dnx.pegasus_graph}
 
-    dnx_graph = dnx_graphs[qpu.properties["topology"]["type"]]
+    dnx_graph = dnx_graphs[qpu.properties["topology"]["type"].lower()]
 
     return dnx_graph(qpu.properties["topology"]["shape"][0], 
                      node_list=qpu.nodelist, 
