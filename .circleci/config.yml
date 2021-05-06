@@ -1,0 +1,27 @@
+version: 2.1
+
+orbs:
+  dwave: dwave/orb-examples@2
+
+workflows:
+  version: 2.1
+  tests:
+    jobs:
+      - dwave/test-linux
+      - dwave/test-osx
+      - dwave/test-win
+
+  # Run weekly tests on all python versions
+  weekly:
+    triggers:
+      - schedule:
+          cron: "0 10 * * 4"
+          filters:
+            branches:
+              only:
+                - master
+                - main
+    jobs:
+      - dwave/test-linux
+      - dwave/test-osx
+      - dwave/test-win
