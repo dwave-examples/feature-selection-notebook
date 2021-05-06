@@ -1,4 +1,4 @@
-# Copyright 2020 D-Wave Systems Inc.
+# Copyright 2021 D-Wave Systems Inc.
 #
 #    Licensed under the Apache License, Version 2.0 (the "License");
 #    you may not use this file except in compliance with the License.
@@ -19,12 +19,11 @@ import dwave_networkx as dnx
 
 def qpu_working_graph(qpu):
     "Return a dwave_networkx graph representing the working graph of a given QPU."
-    
+
     dnx_graphs = {'chimera': dnx.chimera_graph, 'pegasus': dnx.pegasus_graph}
 
     dnx_graph = dnx_graphs[qpu.properties["topology"]["type"].lower()]
 
-    return dnx_graph(qpu.properties["topology"]["shape"][0], 
-                     node_list=qpu.nodelist, 
+    return dnx_graph(qpu.properties["topology"]["shape"][0],
+                     node_list=qpu.nodelist,
                      edge_list=qpu.edgelist)
-

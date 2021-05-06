@@ -1,4 +1,16 @@
-#    Copyright 2019 D-Wave Systems Inc.
+# Copyright 2021 D-Wave Systems Inc.
+#
+#    Licensed under the Apache License, Version 2.0 (the "License");
+#    you may not use this file except in compliance with the License.
+#    You may obtain a copy of the License at
+#
+#        http://www.apache.org/licenses/LICENSE-2.0
+#
+#    Unless required by applicable law or agreed to in writing, software
+#    distributed under the License is distributed on an "AS IS" BASIS,
+#    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#    See the License for the specific language governing permissions and
+#    limitations under the License.
 
 import numpy as np
 import pandas as pd
@@ -19,26 +31,26 @@ def sub_plot(size, small, big, x, subtitles, y, *y2):
             ax.legend(["out", "model"])
         else:
             ax.plot(x, y[y.columns[i]].values)
-        
+
     if big:
         axy = plt.subplot(gs[1, :])
         i += 1
         axy.set_title(y.columns[i])
-        axy.plot(x, y[y.columns[i]].values, 'r') 
+        axy.plot(x, y[y.columns[i]].values, 'r')
     return plt
 
 def plot_toy_signals(df):
-    sub_plot((10, 8), 3, True, np.linspace(-np.pi, np.pi, len(df)), df.columns, df)  
+    sub_plot((10, 8), 3, True, np.linspace(-np.pi, np.pi, len(df)), df.columns, df)
     plt.suptitle("Toy Problem: System Inputs and Output", fontsize=15)
 
 def plot_two_var_model(df1, df2):
     subtitles = ["Modeling %s and %s" % f0f1 for f0f1 in df1.columns]
-    sub_plot((12, 4), 3, 0, np.linspace(-np.pi, np.pi, len(df1)), subtitles, df1, df2) 
+    sub_plot((12, 4), 3, 0, np.linspace(-np.pi, np.pi, len(df1)), subtitles, df1, df2)
     plt.suptitle("Toy Problem: Output Vesus Two-Signal Model", fontsize=15)
 
 def plot_lingress(df, toy):
     subtitles = ["%s correlation coefficient: %.2f" % var_rval for var_rval in df.columns]
-    sub_plot((12, 4), 3, 0, np.linspace(-np.pi, np.pi, len(df)), subtitles, df, toy) 
+    sub_plot((12, 4), 3, 0, np.linspace(-np.pi, np.pi, len(df)), subtitles, df, toy)
     plt.suptitle("Toy Problem: Linear Regression", fontsize=15)
 
 # Warning since 0.24.2
@@ -49,15 +61,15 @@ def plot_lingress(df, toy):
 def plot_se(data):
     df = pd.DataFrame(data)
     plt.figure(figsize=(5, 4))
-    plt.plot(df[['Bins']], df[['Maximum']], 'ro', 
-             df[['Bins']], df[['Uniform']], 'b', 
-             df[['Bins']], df[['Exp']], 'g', 
+    plt.plot(df[['Bins']], df[['Maximum']], 'ro',
+             df[['Bins']], df[['Uniform']], 'b',
+             df[['Bins']], df[['Exp']], 'g',
              df[['Bins']], df[['Vals']], 'y')
     plt.title("Shannon Entropy")
     plt.xlabel("Bins")
     plt.ylabel("Entropy")
     plt.legend(['Maximum', 'Uniform', 'Exp', 'Vals'])
-    
+
 def plot_mi(scores):
     if len(scores) > 5:
         plt.figure(figsize=(8, 5))
@@ -97,4 +109,3 @@ def plot_features(features, selected_features):
     ax.set_yticks(np.arange(-0.5, len(features)), minor=True)
     ax.grid(which='minor', color='black')
     ax.imshow(selected_features, cmap=colors.ListedColormap(['white', 'red']))
-    
