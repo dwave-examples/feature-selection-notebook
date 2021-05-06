@@ -1,6 +1,10 @@
-dwave-ocean-sdk==2.1.1
+dwave-ocean-sdk>=3.3.0
 
 jupyter
-jupyter_contrib_nbextensions==0.5.1
-autopep8==1.3.2
-bokeh==0.12.15
+jupyter_contrib_nbextensions
+autopep8
+
+pandas
+matplotlib~=3.0
+scipy
+bokeh
