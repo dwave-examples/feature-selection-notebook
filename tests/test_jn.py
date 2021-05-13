@@ -117,3 +117,12 @@ class TestJupyterNotebook(unittest.TestCase):
 
         # Section Building the MI-Based BQM, code cell 1
         self.assertIn("8", cell_text(nb, 53))
+
+        # Section Building the MI-Based BQM, code cell 2 (plot_bqm)
+        self.assertIn("application/javascript", cell_output(nb, 55, 1, "data"))
+
+        # Section Setting Up a QPU as a Solver, code cell 1
+        self.assertIn("Maximum chain length", cell_text(nb, 57))
+
+        # Section Submit the Problem for All k Values, code cell 1
+        self.assertIn("image/png", cell_output(nb, 61, 8, "data"))
