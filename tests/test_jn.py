@@ -103,4 +103,17 @@ class TestJupyterNotebook(unittest.TestCase):
         # Section MIQUBO on the Toy Problem, code cell 2
         self.assertIn("('in1', 'in2')", cell_text(nb, 38))
 
-        
+        # Section MIQUBO on the Toy Problem, code cell 3 (plot_solutions)
+        self.assertIn("image/png", cell_output(nb, 40, 0, "data"))
+
+        # Section Penalizing Non-k Selections, code cell 1 (plot_solutions)
+        self.assertIn("image/png", cell_output(nb, 43, 0, "data"))
+
+        # Section Example Application: Predicting, code cell 1 (plot_mi)
+        self.assertIn("image/png", cell_output(nb, 47, 0, "data"))
+
+        # Section Exact Versus Good Solutions, code cell 1
+        self.assertIn("image/png", cell_output(nb, 49, 1, "data"))
+
+        # Section Building the MI-Based BQM, code cell 1
+        self.assertIn("8", cell_text(nb, 53))
