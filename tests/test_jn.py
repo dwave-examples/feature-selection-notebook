@@ -59,6 +59,9 @@ def robust_run_jn(jn, timeout, retries):
 def cell_text(nb, cell):
     return nb["cells"][cell]["outputs"][0]["text"]
 
+def cell_output(nb, cell, part, data_type):
+    return nb["cells"][cell]["outputs"][part][data_type]
+
 jn_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 jn_file = os.path.join(jn_dir, '01-feature-selection.ipynb')
 
@@ -72,3 +75,54 @@ class TestJupyterNotebook(unittest.TestCase):
         nb, errors = robust_run_jn(jn_file, MAX_RUN_TIME, MAX_EMBEDDING_RETRIES)
 
         self.assertEqual(errors, [])
+
+        # Section Illustrative Toy Problem, code cell 2 (plot_toy_signals)
+        self.assertIn("image/png", cell_output(nb, 6, 0, "data"))
+
+        # Section Illustrative Toy Problem, code cell 4 (plot_two_var_model)
+        self.assertIn("Standard deviation", cell_text(nb, 10))
+
+        # Section Illustration of Shannon Entropy, code cell 1 (plot_se)
+        self.assertIn("image/png", cell_output(nb, 16, 0, "data"))
+
+        # Section Illustration of CSE, code cell 1
+        self.assertIn("H(in1)", cell_text(nb, 20))
+
+        # Section Mutual Information on the Toy Problem, code cell 1 (plot_mi)
+        self.assertIn("image/png", cell_output(nb, 24, 0, "data"))
+
+        # Section Mutual Information on the Toy Problem, code cell 2 (plot_lingress)
+        self.assertIn("image/png", cell_output(nb, 26, 0, "data"))
+
+        # Section Conditional Mutual Information, code cell 2
+        self.assertIn("I(out;in2|in1)", cell_text(nb, 31))
+
+        # Section MIQUBO on the Toy Problem, code cell 1
+        self.assertIn("in1:", cell_text(nb, 36))
+
+        # Section MIQUBO on the Toy Problem, code cell 2
+        self.assertIn("('in1', 'in2')", cell_text(nb, 38))
+
+        # Section MIQUBO on the Toy Problem, code cell 3 (plot_solutions)
+        self.assertIn("image/png", cell_output(nb, 40, 0, "data"))
+
+        # Section Penalizing Non-k Selections, code cell 1 (plot_solutions)
+        self.assertIn("image/png", cell_output(nb, 43, 0, "data"))
+
+        # Section Example Application: Predicting, code cell 1 (plot_mi)
+        self.assertIn("image/png", cell_output(nb, 47, 0, "data"))
+
+        # Section Exact Versus Good Solutions, code cell 1
+        self.assertIn("image/png", cell_output(nb, 49, 1, "data"))
+
+        # Section Building the MI-Based BQM, code cell 1
+        self.assertIn("8", cell_text(nb, 53))
+
+        # Section Building the MI-Based BQM, code cell 2 (plot_bqm)
+        self.assertIn("application/javascript", cell_output(nb, 55, 1, "data"))
+
+        # Section Setting Up a QPU as a Solver, code cell 1
+        self.assertIn("Maximum chain length", cell_text(nb, 57))
+
+        # Section Submit the Problem for All k Values, code cell 1
+        self.assertIn("image/png", cell_output(nb, 61, 8, "data"))
