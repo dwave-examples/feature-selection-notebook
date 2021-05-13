@@ -59,6 +59,9 @@ def robust_run_jn(jn, timeout, retries):
 def cell_text(nb, cell):
     return nb["cells"][cell]["outputs"][0]["text"]
 
+def cell_output(nb, cell, part, data_type):
+    return nb["cells"][cell]["outputs"][part][data_type]
+
 jn_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 jn_file = os.path.join(jn_dir, '01-feature-selection.ipynb')
 
@@ -72,3 +75,32 @@ class TestJupyterNotebook(unittest.TestCase):
         nb, errors = robust_run_jn(jn_file, MAX_RUN_TIME, MAX_EMBEDDING_RETRIES)
 
         self.assertEqual(errors, [])
+
+        # Section Illustrative Toy Problem, code cell 2 (plot_toy_signals)
+        self.assertIn("image/png", cell_output(nb, 6, 0, "data"))
+
+        # Section Illustrative Toy Problem, code cell 4 (plot_two_var_model)
+        self.assertIn("Standard deviation", cell_text(nb, 10))
+
+        # Section Illustration of Shannon Entropy, code cell 1 (plot_se)
+        self.assertIn("image/png", cell_output(nb, 16, 0, "data"))
+
+        # Section Illustration of CSE, code cell 1
+        self.assertIn("H(in1)", cell_text(nb, 20))
+
+        # Section Mutual Information on the Toy Problem, code cell 1 (plot_mi)
+        self.assertIn("image/png", cell_output(nb, 24, 0, "data"))
+
+        # Section Mutual Information on the Toy Problem, code cell 2 (plot_lingress)
+        self.assertIn("image/png", cell_output(nb, 26, 0, "data"))
+
+        # Section Conditional Mutual Information, code cell 2
+        self.assertIn("I(out;in2|in1)", cell_text(nb, 31))
+
+        # Section MIQUBO on the Toy Problem, code cell 1
+        self.assertIn("in1:", cell_text(nb, 36))
+
+        # Section MIQUBO on the Toy Problem, code cell 2
+        self.assertIn("('in1', 'in2')", cell_text(nb, 38))
+
+        
