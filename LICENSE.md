@@ -1,3 +1,12 @@
+The software provided in this example, both the code lines demonstrated in the
+[Jupyter Notebook](01-feature-selection.ipynb) and in additional helper files, is
+licensed under the Apache License, Version 2.0 (see below).
+
+The [Jupyter Notebook](01-feature-selection.ipynb) itself is licensed under a
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0)
+
+![Creative Commons License](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)
+
                              Apache License
                         Version 2.0, January 2004
                      http://www.apache.org/licenses/

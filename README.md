@@ -29,4 +29,4 @@ jupyter notebook
 
 ## License
 
-Released under the Apache License 2.0. See LICENSE file.
+See [LICENSE](LICENSE.md) file.
