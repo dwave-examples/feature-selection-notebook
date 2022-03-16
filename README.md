@@ -10,7 +10,7 @@ including *dwave-hybrid*, on an example of feature selection for machine learnin
 
 ## Usage
 
-To enable notebook extensions[^]:
+To enable notebook extensions[^1]:
 
 ```bash
 jupyter contrib nbextension install --sys-prefix
