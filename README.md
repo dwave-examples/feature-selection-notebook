@@ -10,7 +10,7 @@ including *dwave-hybrid*, on an example of feature selection for machine learnin
 
 ## Usage
 
-To enable notebook extensions:
+To enable notebook extensions[^1]:
 
 ```bash
 jupyter contrib nbextension install --sys-prefix
@@ -26,6 +26,8 @@ To run the notebook:
 ```bash
 jupyter notebook
 ```
+
+[^1]: Leap's IDE, which runs VS Code, does not support all notebook extensions.  
 
 ## License
 
