@@ -61,10 +61,10 @@ def plot_lingress(df, toy):
 def plot_se(data):
     df = pd.DataFrame(data)
     plt.figure(figsize=(5, 4))
-    plt.plot(df[['Bins']], df[['Maximum']], 'ro',
-             df[['Bins']], df[['Uniform']], 'b',
-             df[['Bins']], df[['Exp']], 'g',
-             df[['Bins']], df[['Vals']], 'y')
+    plt.plot(df[['Bins']].values, df[['Maximum']].values, 'ro',
+             df[['Bins']].values, df[['Uniform']].values, 'b',
+             df[['Bins']].values, df[['Exp']].values, 'g',
+             df[['Bins']].values, df[['Vals']].values, 'y')
     plt.title("Shannon Entropy")
     plt.xlabel("Bins")
     plt.ylabel("Entropy")
