@@ -5,8 +5,9 @@
 # Feature Selection Jupyter Notebook
 
 This notebook develops a QPU programming model for an optimization problem that
-selects a subset and demonstrates it using D-Wave Ocean's stack of tools,
-including *dwave-hybrid*, on an example of feature selection for machine learning.
+selects a subset and demonstrates it using Ocean software's
+[dwave-hybrid](https://docs.ocean.dwavesys.com/en/stable/docs_hybrid/sdk_index.html)
+on an example of feature selection for machine learning.
 
 The notebook has the following sections:
 
@@ -27,8 +28,8 @@ to predict output variables of interest. Feature selection can be part of the mo
 design process: selecting from a large set of potential features a highly informative
 subset simplifies the model and reduces dimensionality.
 
-For systems with large numbers of potential input information---for example,
-weather forecasting or image recognition---model complexity and required compute
+For systems with large numbers of potential input information&mdash;for example,
+weather forecasting or image recognition&mdash;model complexity and required compute
 resources can be daunting. Feature selection can help make such models tractable.
 
 However, optimal feature selection can itself be a hard problem. This example
