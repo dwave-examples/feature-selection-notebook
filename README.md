@@ -17,7 +17,9 @@ The notebook has the following sections:
 3. **Solving Feature Selection on a Quantum Computer** shows how such optimization
    problems can be formulated for solution on a D-Wave quantum computer.
 4. **Example Application: Predicting Survival of Titanic Passengers** demonstrates
-   the use of *Kerberos*, an out-of-the-box classical-quantum
+   the use of
+   [Kerberos](https://docs.ocean.dwavesys.com/en/stable/docs_hybrid/reference/reference.html), 
+   an out-of-the-box classical-quantum
    [hybrid](https://docs.ocean.dwavesys.com/en/stable/docs_hybrid/sdk_index.html)
    sampler, to select optimal features for a public-domain dataset.
 
