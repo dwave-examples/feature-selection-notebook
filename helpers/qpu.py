@@ -20,7 +20,10 @@ import dwave_networkx as dnx
 def qpu_working_graph(qpu):
     "Return a dwave_networkx graph representing the working graph of a given QPU."
 
-    dnx_graphs = {'chimera': dnx.chimera_graph, 'pegasus': dnx.pegasus_graph}
+    dnx_graphs = {'chimera': dnx.chimera_graph,
+                  'pegasus': dnx.pegasus_graph,
+                  'zephyr': dnx.zephyr_graph,
+                  }
 
     dnx_graph = dnx_graphs[qpu.properties["topology"]["type"].lower()]
 
