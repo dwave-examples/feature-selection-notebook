@@ -101,7 +101,7 @@ class TestJupyterNotebook(unittest.TestCase):
         self.assertIn("in1:", cell_text(nb, 36))
 
         # Section MIQUBO on the Toy Problem, code cell 2
-        self.assertIn("('in1', 'in2')", cell_text(nb, 38))
+        self.assertRegex(cell_text(nb, 38), "\('in.', 'in.'\)")
 
         # Section MIQUBO on the Toy Problem, code cell 3 (plot_solutions)
         self.assertIn("image/png", cell_output(nb, 40, 0, "data"))
