@@ -2,7 +2,7 @@
   https://circleci.com/gh/dwave-examples/feature-selection-notebook.svg?style=svg)](
   https://circleci.com/gh/dwave-examples/feature-selection-notebook)
 
-# Feature Selection Jupyter Notebook
+# Feature Selection
 
 This notebook develops a QPU programming model for an optimization problem that
 selects a subset and demonstrates it using Ocean software's
@@ -18,7 +18,7 @@ The notebook has the following sections:
    problems can be formulated for solution on a D-Wave quantum computer.
 4. **Example Application: Predicting Survival of Titanic Passengers** demonstrates
    the use of
-   [Kerberos](https://docs.ocean.dwavesys.com/en/stable/docs_hybrid/reference/reference.html), 
+   [Kerberos](https://docs.ocean.dwavesys.com/en/stable/docs_hybrid/reference/reference.html),
    an out-of-the-box classical-quantum
    [hybrid](https://docs.ocean.dwavesys.com/en/stable/docs_hybrid/sdk_index.html)
    sampler, to select optimal features for a public-domain dataset.
