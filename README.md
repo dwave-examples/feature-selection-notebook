@@ -1,3 +1,8 @@
+> [!IMPORTANT]  
+> This repository has been archived and is no longer maintained. An updated version of the Feature Selection demo can be found [here](https://github.com/dwave-examples/feature-selection-cqm).
+
+---
+
 [![Open in GitHub Codespaces](
   https://img.shields.io/badge/Open%20in%20GitHub%20Codespaces-333?logo=github)](
   https://codespaces.new/dwave-examples/feature-selection-notebook?quickstart=1)
